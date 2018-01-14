@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+    <span style="margin:0 auto"><i class="material-icons">done</i>&nbsp;<span style="margin-bottom:10px">Event Manger</span></span>
+</mat-toolbar>
+<form [formGroup] = "signupForm" (ngSubmit)="onSignUp()" >
+  <div class="row">
+    <div class="col-md-4"></div>
+    <mat-form-field class="col-md-4">
+      <input matInput placeholder="Enter your email" formControlName="email" required>
+      <i matPrefix class="fa fa-user" aria-hidden="true">&nbsp;</i>
+      <mat-error *ngIf="signupForm.get('email').invalid">Enter valid email</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <mat-form-field class="col-md-4">
+      <input matInput placeholder="Username" formControlName="username" required>
+      <mat-error *ngIf="signupForm.get('username').invalid">Please Enter a username</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <mat-form-field class="col-md-4">
+      <input matInput type="password" placeholder="Password" formControlName="password" required>
+      <mat-error *ngIf="signupForm.get('password').invalid">Enter a password</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <mat-form-field class="col-md-4">
+      <input matInput placeholder="Frist Name" formControlName="first_name" required>
+      <mat-error *ngIf="signupForm.get('first_name').invalid">Enter your First Name</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <mat-form-field class="col-md-4">
+      <input matInput placeholder="Last Name" formControlName="last_name" required>
+      <mat-error *ngIf="signupForm.get('last_name').invalid">Enter your Last Name</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <button mat-raised-button color="primary">Sign Up</button>
+  </div>
+</form>

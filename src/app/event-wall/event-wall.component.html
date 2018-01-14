@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)= "display=true">
+    <mat-icon aria-label="Example icon-button with a heart icon">reorder</mat-icon>
+  </button>
+  <span style="margin:0 auto">
+    <i class="material-icons">done</i>&nbsp;
+    <span style="margin-bottom:10px">Event Manger</span>
+  </span>
+</mat-toolbar>
+<p-sidebar [(visible)]="display" >
+</p-sidebar>
+<div *ngIf = "!loading">
+<app-user *ngIf = "!this.isManager"></app-user>
+<app-manager *ngIf = "this.isManager && !isAdmin"></app-manager>
+<app-admin *ngIf = "this.isAdmin"></app-admin>
+</div>

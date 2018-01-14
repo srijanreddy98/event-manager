@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="ui-g ui-fluid">
+    <div class="ui-g-12 ui-md-4">
+    </div>
+
+    <div class="ui-g-12 ui-md-4">
+      <mat-card style="background-color : rgba(255, 255, 255, 0)">
+        <mat-form-field color="primary" style="width:100%;">
+          <input type="text" (keyup)="applyFilter($event.target.value)" matInput placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </mat-card>
+    </div>
+    <div class = "ui-g-12 ui-md-4" *ngIf="selectedTab === 2">
+      <button pButton type="button" (click)="newEvent()" icon="fa-plus" iconPos="right" label="Create Event"></button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" *ngIf="this.selectedTab === 0">
+      <div *ngFor="let event of filteredEvents;let i = index">
+        <div class="clearfix" *ngIf="i % 3 == 0 && i!==0"></div>
+        <mat-card class="example-card col-md-4" (click)="register(i)">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{event.name}}</mat-card-title>
+            <mat-card-subtitle>Starts:{{getDate(event.start_date+'T'+event.start_time, 'lll')}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content style="height:100px" [style.overflow]="'auto'">
+            <p>
+              {{event.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button disabled>{{getDate(event.start_date, 'll')}}</button> to
+            <button mat-button disabled>{{getDate(event.end_date, 'll')}}</button>
+          </mat-card-actions>
+          <mat-card-actions style="position:absolute;bottom:14px">
+            <button mat-button color="primary">Register</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row" *ngIf="this.selectedTab === 1">
+      <div *ngFor="let event of filteredEvents;let i = index">
+        <div class="clearfix" *ngIf="i % 3 == 0 && i!==0"></div>
+        <mat-card class="example-card col-md-4" (click)="register(i)">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{event.name}}</mat-card-title>
+            <mat-card-subtitle>Starts:{{getDate(event.start_date+'T'+event.start_time, 'lll')}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content style="height:100px" [style.overflow]="'auto'">
+            <p>
+              {{event.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button disabled>{{getDate(event.start_date, 'll')}}</button> to
+            <button mat-button disabled>{{getDate(event.end_date, 'll')}}</button>
+          </mat-card-actions>
+          <mat-card-actions style="position:absolute;bottom:14px">
+            <button mat-button color="primary">Opt Out</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row" *ngIf="this.selectedTab === 2">
+      <div *ngFor="let event of filteredEvents;let i = index">
+        <div class="clearfix" *ngIf="i % 3 == 0 && i!==0"></div>
+        <mat-card class="example-card col-md-4" style="padding-bottom:10px" (click)="register(i)">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{event.name}}</mat-card-title>
+            <mat-card-subtitle>Starts:{{getDate(event.start_date+'T'+event.start_time, 'lll')}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content style="height:100px" [style.overflow]="'auto'">
+            <p>
+              {{event.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button disabled>{{getDate(event.start_date, 'll')}}</button> to
+            <button mat-button disabled>{{getDate(event.end_date, 'll')}}</button>
+          </mat-card-actions>
+          <mat-card-actions style="position:absolute;bottom:14px">
+            <button mat-button color="primary">See Details</button>
+            <button mat-button color="warn" (click) = "deleteEvent(i)">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="z-index:10;position:fixed;bottom:0;width:100%;">
+  <p-tabMenu [model]="items"></p-tabMenu>
+</div>

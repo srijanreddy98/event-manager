@@ -1,0 +1,20 @@
+<div style="min-height:400px;">
+<form [formGroup]="eventForm" (ngSubmit) = "submit()">
+    <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name" required>
+        <i matPrefix class="fa fa-id-badge" aria-hidden="true">&nbsp;</i>
+        <mat-error *ngIf="eventForm.get('name').invalid">Enter a name</mat-error>
+    </mat-form-field>
+    <br>
+    <p-calendar formControlName="start_date" [showIcon] = "true"></p-calendar>
+    <p-calendar formControlName="start_time" [timeOnly]="true" icon= "fa-clock-o" [showIcon] = "true"></p-calendar>
+    <p-calendar formControlName="end_date" [showIcon] = "true" ></p-calendar>
+    <p-calendar formControlName="end_time" [timeOnly]="true" icon= "fa-clock-o" [showIcon] = "true"></p-calendar><br>
+    <mat-form-field>
+        <input matInput placeholder="Decription" formControlName="description" required>
+        <i matPrefix class="fa fa-pencil" aria-hidden="true">&nbsp;</i>
+        <mat-error *ngIf="eventForm.get('description').invalid">Enter something about your event</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color = "primary">Submit</button>
+</form>
+</div>
